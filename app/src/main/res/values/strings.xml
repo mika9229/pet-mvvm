@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Pet mvvm</string>
+    <string name="click_on_me">click on me</string>
 </resources>
