@@ -7,7 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import test.com.petmvvm.core.api.comunicator.AuthCommunicator
 import test.com.petmvvm.core.api.comunicator.AuthCommunicatorImpl
-import test.com.petmvvm.core.api.services.TestService
+import test.com.petmvvm.core.api.services.GitHubServise
 
 
 val apiModule = module {
@@ -24,12 +24,12 @@ val apiModule = module {
     single {
         Retrofit.Builder()
             .client(get<OkHttpClient>())
-            .baseUrl("https://schematic-ipsum.herokuapp.com/")
+            .baseUrl("https://api.github.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
 
-    single { get<Retrofit>().create(TestService::class.java) }
+    single { get<Retrofit>().create(GitHubServise::class.java) }
 
     single { AuthCommunicatorImpl(get()) as AuthCommunicator }
 

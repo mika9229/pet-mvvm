@@ -7,35 +7,86 @@
 
         <variable
             name="vm"
-            type="test.com.petmvvm.ui.main_activity.MainActivityViewModel" />
+            type="test.com.petmvvm.ui.auth_activity.AuthActivityViewModel" />
 
     </data>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.auth_activity.AuthActivity">
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{vm.mesageUser}"
+            android:visibility="@{vm.mesageUser != null}"
+            android:textColor="@android:color/holo_red_dark"
+            android:layout_margin="@dimen/padding_bottom"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/progressBar" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/padding_bottom"
+            android:visibility="@{vm.visibleLoader}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/login_text_input"/>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/login_text_input"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".ui.main_activity.MainActivity">
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/horizontal_padding"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/login"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hello World!"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:hint="@string/hint_mail"/>
 
-            <Button
-                android:layout_width="wrap_content"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/pass_text_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/horizontal_padding"
+            app:layout_constraintTop_toBottomOf="@+id/login_text_input"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <EditText
+                android:id="@+id/pass"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                android:text="@string/click_on_me"
-                android:onClick="@{vm::loadData}"/>
+                android:hint="@string/hint_password"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/horizontal_padding"
+            app:layout_constraintTop_toBottomOf="@+id/pass_text_input"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="@string/authorize"
+            android:onClick="@{(v)->vm.loadData(login.getText(), pass.getText())}"/>
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

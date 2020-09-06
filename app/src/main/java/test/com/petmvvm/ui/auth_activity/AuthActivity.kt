@@ -1,4 +1,4 @@
-package test.com.petmvvm.ui.main_activity
+package test.com.petmvvm.ui.auth_activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,7 +9,7 @@ import test.com.petmvvm.R
 import org.koin.android.viewmodel.ext.android.getViewModel
 import test.com.petmvvm.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class AuthActivity : AppCompatActivity() {
 
     protected inline fun <reified T : ViewDataBinding> binding(
         @LayoutRes resId: Int
@@ -21,8 +21,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         binding.apply {
-            lifecycleOwner = this@MainActivity
-            vm = getViewModel<MainActivityViewModel>()
+            lifecycleOwner = this@AuthActivity
+            vm = getViewModel<AuthActivityViewModel>()
         }
     }
 

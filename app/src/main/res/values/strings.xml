@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Pet mvvm</string>
     <string name="click_on_me">click on me</string>
+    <string name="hint_mail">please enter mail</string>
+    <string name="hint_password">please enter password</string>
+    <string name="authorize">authorize</string>
 </resources>

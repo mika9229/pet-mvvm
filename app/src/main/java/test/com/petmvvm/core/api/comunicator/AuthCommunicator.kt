@@ -1,12 +1,12 @@
 package test.com.petmvvm.core.api.comunicator
 
 
-import test.com.petmvvm.core.api.request.TestRequest
-import test.com.petmvvm.core.api.response.TestResponse
+import kotlinx.coroutines.Deferred
+import test.com.petmvvm.core.api.response.GithubResponse
 
 
 interface AuthCommunicator {
 
-    suspend fun sendReqest(body: TestRequest): TestResponse
+    suspend fun sendReqest(mail: String, password: String): GithubResponse
 
 }
